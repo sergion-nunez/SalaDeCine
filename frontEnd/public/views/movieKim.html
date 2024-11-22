@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+    <link rel="stylesheet" href="../css/movies.css" />
+  </head>
+  <body>
+    <header>
+      <div class="logo-container">
+        <h1><i class="fas fa-film"></i> CineCalidad</h1>
+      </div>
+      <nav>
+        <ul>
+          <li>
+            <a href="/"><i class="fas fa-home"></i> Inicio</a>
+          </li>
+          <li>
+            <a href="/salas"><i class="fas fa-door-open"></i> Salas</a>
+          </li>
+          <li>
+            <a href="/nosotros"><i class="fas fa-users"></i> Nosotros</a>
+          </li>
+          <li>
+            <a href="/contacto"><i class="fas fa-envelope"></i> Contacto</a>
+          </li>
+          <li>
+            <a href="/registro"><i class="fas fa-user-plus"></i> Registro</a>
+          </li>
+          <li>
+            <a href="/login"
+              ><i class="fas fa-sign-in-alt"></i> Iniciar Sesión</a
+            >
+          </li>
+        </ul>
+      </nav>
+      <div
+        id="connected-indicator"
+        class="hidden flex items-center bg-green-100 text-green-700 px-4 py-2 rounded-full"
+      >
+        <i class="fas fa-circle text-green-500 mr-2"></i>
+        <span class="status">Conectado</span>
+      </div>
+    </header>
+
+    <section class="movie-details">
+        <div class="movie-image">
+          <img src="../img/movieKimetsu.jpg" alt="Kimetsu No Yaiba" />
+        </div>
+        <div class="movie-info">
+          <h2>Kimetsu No Yaiba - La película</h2>
+          <p><b>Sinopsis:</b> Tras una tragedia en la que su familia es asesinada por demonios y su hermana Nezuko transformada en uno de ellos, Tanjiro se une a los Cazadores de Demonios. Su misión es encontrar una cura para Nezuko y vengar la muerte de su familia, mientras lucha contra poderosos demonios en un mundo sombrío lleno de desafíos, sacrificios y enfrentamientos épicos</p>
+        </div>
+      </section>
+  
+      <section class="selection-container">
+        <div class="selection">
+          <h3>Elige la Fecha y Hora</h3>
+          <label for="date">Fecha:</label>
+          <input type="date" id="date" name="date" />
+          <label for="time">Hora:</label>
+          <input type="time" id="time" name="time" />
+        </div>
+
+    <!-- Sección de Selección de Asientos -->
+    <div class="seleccion-asientos">
+      <h3 class="asientos">!Elige tus Asientos¡</h3>
+      <div class="asientos-container">
+        <div class="asientos">
+          <!-- Fila 1 -->
+          <div class="asiento" id="a1"></div>
+          <div class="asiento" id="a2"></div>
+          <div class="asiento" id="a3"></div>
+          <div class="asiento" id="a4"></div>
+        </div>
+        <div class="asientos">
+          <!-- Fila 2 -->
+          <div class="asiento" id="b1"></div>
+          <div class="asiento" id="b2"></div>
+          <div class="asiento" id="b3"></div>
+          <div class="asiento" id="b4"></div>
+        </div>
+        <div class="asientos">
+          <!-- Fila 3 -->
+          <div class="asiento" id="c1"></div>
+          <div class="asiento" id="c2"></div>
+          <div class="asiento" id="c3"></div>
+          <div class="asiento" id="c4"></div>
+        </div>
+        <div class="asientos">
+          <!-- Fila 4 -->
+          <div class="asiento" id="d1"></div>
+          <div class="asiento" id="d2"></div>
+          <div class="asiento" id="d3"></div>
+          <div class="asiento" id="d4"></div>
+        </div>
+      </div>
+      <div class="total">
+        <h4>Total Seleccionado: <span id="total">0</span>$</h4>
+        <button id="reservar-btn"><b>Reservar Asientos</b></button>
+      </div>
+    </div>
+
+    <footer>
+      <div class="footer-content">
+        <div class="footer-section">
+          <h3>CineCalidad</h3>
+          <p>Tu cine de confianza desde 2024</p>
+        </div>
+        <div class="footer-section">
+          <h3>Contacto</h3>
+          <p><i class="fas fa-phone"></i> +1234567890</p>
+          <p><i class="fas fa-envelope"></i> info@cinecalidad.com</p>
+        </div>
+        <div class="footer-section">
+          <h3>Síguenos</h3>
+          <div class="social-links">
+            <a href="#"><i class="fab fa-facebook"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2024 CineCalidad | Todos los derechos reservados</p>
+      </div>
+    </footer>
+
+    <script src="../js/salas.js"></script>
+  </body>
+</html>
