@@ -37,4 +37,17 @@ router.post("/reservar", async (req, res) => {
   }
 });
 
+// Ruta para obtener todas las reservas (para el administrador)
+router.get("/reservas", async (req, res) => {
+  try {
+    const reservas = await Reserva.find(); // Obtiene todas las reservas de la base de datos
+    res.status(200).json({ success: true, data: reservas });
+  } catch (error) {
+    console.error(error);
+    res
+      .status(500)
+      .json({ success: false, message: "Error al obtener reservas." });
+  }
+});
+
 module.exports = router;

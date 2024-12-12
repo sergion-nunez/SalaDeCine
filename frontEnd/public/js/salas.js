@@ -34,7 +34,7 @@ reservarBtn.addEventListener("click", () => {
     const fechaSeleccionada = fechaInput.value;
     const horaSeleccionada = horaInput.value;
 
-    // Si la fecha y la hora están vacías, muestra un mensaje de alerta
+    // Validación de fecha y hora
     if (!fechaSeleccionada || !horaSeleccionada) {
       alert("Por favor, selecciona una fecha y una hora.");
       return;
@@ -45,8 +45,19 @@ reservarBtn.addEventListener("click", () => {
       nombrePelicula,
       fecha: fechaSeleccionada,
       hora: horaSeleccionada,
-      asientos: Array.from(asientosSeleccionados).map((asiento) => asiento.id), // Los asientos seleccionados
+      asientos: Array.from(asientosSeleccionados).map((asiento) => asiento.id),
     };
+
+    // Muestra los detalles en el modal
+    const modal = document.getElementById("reservaModal");
+    const modalContent = document.getElementById("reservaDetalle");
+    modalContent.innerHTML = `
+      <b>Película:</b> ${reserva.nombrePelicula}<br>
+      <b>Fecha:</b> ${reserva.fecha}<br>
+      <b>Hora:</b> ${reserva.hora}<br>
+      <b>Asientos:</b> ${reserva.asientos.join(", ")}
+    `;
+    modal.style.display = "block";
 
     // Enviar la reserva al servidor
     fetch("movies/reservar", {
@@ -59,30 +70,21 @@ reservarBtn.addEventListener("click", () => {
       .then((response) => response.json())
       .then((data) => {
         if (data.success) {
-          // Muestra el mensaje de éxito
-          const mensajeReserva = document.createElement("div");
-          mensajeReserva.textContent = `Reserva exitosa. Has reservado ${asientosSeleccionados.length} asientos.`;
-          mensajeReserva.classList.add("mensaje-reserva");
-          document.body.appendChild(mensajeReserva);
-
-          // Limpiar la selección después de unos segundos
-          setTimeout(() => {
-            document.body.removeChild(mensajeReserva);
-            asientosSeleccionados.forEach((asiento) => {
-              asiento.classList.remove("selected");
-            });
-            totalSeleccionado = 0;
-            totalElement.textContent = "0";
-          }, 3000);
+          console.log("Reserva registrada exitosamente en el servidor.");
         } else {
-          alert("Error al realizar la reserva.");
+          alert("Error al realizar la reserva en el servidor.");
         }
       })
       .catch((error) => {
-        alert("Hubo un problema al guardar la reserva.");
-        console.error(error);
+        console.error("Hubo un problema al guardar la reserva:", error);
       });
   } else {
     alert("Por favor, selecciona al menos un asiento.");
   }
+});
+
+// Cerrar el modal al hacer clic en el botón de cerrar
+const closeModal = document.querySelector(".close");
+closeModal.addEventListener("click", () => {
+  document.getElementById("reservaModal").style.display = "none";
 });

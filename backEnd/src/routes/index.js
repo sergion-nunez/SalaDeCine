@@ -50,4 +50,11 @@ router.get("/login", (req, res) => {
   );
 });
 
+// Ruta para servir la página de administración
+router.get("/admin", (req, res) => {
+  res.sendFile(
+    path.join(__dirname, "../../../frontend/public/views/admin.html")
+  );
+});
+
 module.exports = router;
